@@ -23,6 +23,7 @@ export default function CreatePost(){
     const [summary,setSummary] = useState('');
     const [content,setContent] = useState('');
     const [files, setFiles] = useState('');
+    const [redirect, setRedirect] = useState(false);
     async function createNewPost(ev){
         const data = new FormData();
         data.set('title', title);
@@ -33,9 +34,16 @@ export default function CreatePost(){
         const response = await fetch('http://localhost:3001/post',{
             method: 'POST',
             body: data,
-
         });
+
+        if(response.ok){
+            setRedirect(true);
+        }
     }
+
+        if(redirect){
+            return <Navigate to={'/'}/>
+        }
     return(
         <form onSubmit={createNewPost}>
             <input type="title" 
