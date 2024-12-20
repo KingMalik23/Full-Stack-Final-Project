@@ -1,15 +1,17 @@
-export default function Post(){
+import {formatISO9075} from "date-fns";
+
+export default function Post({title,summary,cover,content,author}){
     return(
         <div className="post">
         <div className="image">
         <img src="https://observer.case.edu/wp-content/uploads/2021/02/sports2-900x600.jpg" alt=""/>        </div>
         <div className="texts">
-          <h2>Lebron James 5th ring?</h2>
+          <h2>{title}</h2>
           <p className="info">
-            <a className="author">Malik Doumbia</a>
-            <time>2024-11-25 11:16</time>
+            <a className="author">{author.username}</a>
+            <time>{formatISO9075(new Date(createAt))}</time>
           </p>
-          <p>LeBron James has not won a fifth NBA championship ring yet, but he has a chance to do so in the 2023/24 season</p>
+          <p className="summary">{summary}</p>
         </div>
         </div>
     );
