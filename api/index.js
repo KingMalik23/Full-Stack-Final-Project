@@ -18,6 +18,7 @@ const secret = 'ioohhuhbu';
 app.use(cors({credentials:true,origin:'http://localhost:3001'}));
 app.use(express.json());
 app.use(cookieParser());
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 mongoose.connect('mongodb+srv://malikdoumbia23:Doumbia12!@cluster0.2xo8p.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0');
 
@@ -99,7 +100,12 @@ app.post('/post', uploadMiddleware.single('file'), async (req,res) =>{
 
 
 app.get('/post', async (req,res) => {
-    res.json(await Post.find().populate('author', ['username']));
+    res.json(
+         await Post.find()
+         .populate('author', ['username'])
+         .sort({createdAt: -1})
+         .limit(20)
+        );
 });
 
 
