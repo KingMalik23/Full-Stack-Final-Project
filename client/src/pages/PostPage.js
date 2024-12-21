@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import {formatISO9075} from "date-fns";
 import { UserContext } from "../UserContext";
-import { Link } from "react-router-dom";
 
 
 export default function PostPage() {
