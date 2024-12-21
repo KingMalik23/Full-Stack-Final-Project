@@ -2,7 +2,6 @@ import ReactQuill from 'react-quill';
 import {useEffect, useState} from "react";
 import { Navigate, useParams } from "react-router-dom";
 import Editor from '../Editor';
-import { response } from 'express';
 
 
 
@@ -50,7 +49,7 @@ export default function EditPost(){
     if(redirect){
         return <Navigate to={'/post/'+id}/>
     }
-    
+
     return(
         <form onSubmit={updatePost}>
             <input type="title" 
